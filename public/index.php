@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +12,12 @@
 <body>
     <?php 
         include 'navbar.php';
+        include 'message.php';
     ?>
 
     <div class="card">
         <div class="card-header">
-            <h4>Lista de Usuários <a href="#">Adicionar Usuário</a></h4>
+            <h4>Lista de Usuários <a href="userCreate.php">Adicionar Usuário</a></h4>
         </div>
         <div class="card-body">
             <table border="1">
