@@ -14,7 +14,7 @@
                     ? 'Usuário criado com sucesso!'
                     : 'Não foi possível criar o usuário.';
             
-            header('Location: ../public/index.php');
+            header('Location: ../../public/index.php');
             exit;
         }
     }

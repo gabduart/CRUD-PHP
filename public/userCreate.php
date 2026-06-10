@@ -13,7 +13,7 @@
             <h4>Adicionar Usuário <a href="index.php">Cancelar</a></h4>
         </div>
         <div class="card-body">
-            <form action="router.php?action=store" method="post">
+            <form action="../app/router/router.php?action=store" method="post">
                 <div>
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="id_nome">
