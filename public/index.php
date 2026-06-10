@@ -1,5 +1,9 @@
-<?php 
-    session_start();
+<?php
+
+    require_once __DIR__ . '/../app/router/router.php';
+
+    $usuarios = $controller->index();
+
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +35,19 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+                        if ($usuarios == null) {
+                            echo "<h4>Lista Vazia</h4>";
+                        }
+                        foreach ($usuarios as $usuario): ?>
                     <tr>
-                        <td>1</td>
-                        <td>Jurandir</td>
-                        <td>juran@gmail.com</td>
-                        <td>10/02/1989</td>
+                        <td><?= $usuario['id'] ?></td>
+                        <td><?= $usuario['nome'] ?></td>
+                        <td><?= $usuario['email'] ?></td>
+                        <td><?= date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
                         <td><button type="button">Visualizar</button> <button type="button">editar</button> <button type="button">Excluir</button></td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

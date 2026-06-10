@@ -1,23 +1,28 @@
 <?php 
     session_start();
-    require_once '../controllers/UserController.php';
-    require_once '../services/UserService.php';
-    require_once '../repositories/UserRepository.php';
-    require_once '../database/Connection.php';
+    require_once __DIR__ . '/../controllers/UserController.php';
+    require_once __DIR__ . '/../services/UserService.php';
+    require_once __DIR__ . '/../repositories/UserRepository.php';
+    require_once __DIR__ . '/../database/Connection.php';
 
     $repository = new UserRepository(Connection::getConnection());
     $service = new UserService($repository);
     $controller = new UserController($service);
 
-    $action = $_GET['action'] ?? '';
+    $action = $_GET['action'] ?? null;
 
-    switch ($action) {
-        case 'store':
-            $controller->store();
-            break;
+    if ($action !== null) {
 
-        default:
-            header('Location: ../../public/index.php');
-            exit;
+        switch ($action) {
+
+            case 'store':
+                $controller->store();
+                break;
+
+            default:
+                http_response_code(404);
+                echo "Ação não encontrada";
+                exit;
+        }
     }
 ?>

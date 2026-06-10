@@ -22,5 +22,9 @@
 
             return $this->repository->create($user);
         }
+
+        public function serviceFindAll() {
+            return $this->repository->findAll();
+        }
     }
 ?>
