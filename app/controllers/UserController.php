@@ -17,5 +17,9 @@
             header('Location: ../../public/index.php');
             exit;
         }
+
+        public function index() {
+            return $this->userService->serviceFindAll();
+        }
     }
 ?>
