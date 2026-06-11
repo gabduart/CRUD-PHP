@@ -31,5 +31,23 @@
 
             return $resultado->fetch_all(MYSQLI_ASSOC);
         }
+
+        public function findById(int $id): ?array {
+            $stmt = $this->conexao->prepare(
+                "SELECT * FROM users
+                WHERE id = ?"
+            );
+
+            $stmt->bind_param(
+                "i",
+                $id
+            );
+
+            $stmt->execute();
+
+            $resultado = $stmt->get_result();
+
+            return $resultado->fetch_assoc() ?: null;
+        }
     }
 ?>

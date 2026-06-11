@@ -21,5 +21,13 @@
         public function index() {
             return $this->userService->serviceFindAll();
         }
+
+        public function view() {
+            $usuario = $this->userService->serviceFindById(
+                (int) $_GET['id']
+            );
+
+            require __DIR__ . '/../../public/userView.php';
+        }
     }
 ?>

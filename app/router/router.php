@@ -14,9 +14,12 @@
     if ($action !== null) {
 
         switch ($action) {
-
             case 'store':
                 $controller->store();
+                break;
+
+            case 'view':
+                $controller->view();
                 break;
 
             default:

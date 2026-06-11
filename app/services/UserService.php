@@ -26,5 +26,9 @@
         public function serviceFindAll() {
             return $this->repository->findAll();
         }
+
+        public function serviceFindById(int $id) {
+            return $this->repository->findById($id);
+        }
     }
 ?>
