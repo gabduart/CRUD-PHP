@@ -45,7 +45,11 @@
                         <td><?= $usuario['nome'] ?></td>
                         <td><?= $usuario['email'] ?></td>
                         <td><?= date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
-                        <td><button type="button">Visualizar</button> <button type="button">editar</button> <button type="button">Excluir</button></td>
+                        <td>
+                            <a href="../app/router/router.php?action=view&id=<?= $usuario['id'] ?>">Vizualizar</a>
+                            <a href="">Editar</a>
+                            <a href="">Excluir</a>
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
