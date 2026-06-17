@@ -29,5 +29,47 @@
 
             require __DIR__ . '/../../public/userView.php';
         }
+
+        public function edit() {
+            $usuario = $this->userService->serviceEdit(
+                (int) $_GET['id']
+            );
+
+            require __DIR__ . '/../../public/userEdit.php';
+        }
+
+        public function update() {
+            $resultado = $this->userService->serviceUpdate(
+                $_POST
+            );
+
+            $_SESSION['mensagem'] =
+                $resultado
+                    ? 'Usuário atualizado com sucesso!'
+                    : 'Erro ao atualizar usuário.';
+
+            header(
+                'Location: ../../public/index.php'
+            );
+
+            exit;
+        }
+
+        public function delete() {
+            $resultado = $this->userService->serviceDelete(
+                (int) $_GET['id']
+            );
+
+            $_SESSION['mensagem'] =
+                $resultado
+                    ? 'Usuário excluído com sucesso!'
+                    : 'Erro ao excluir usuário.';
+
+            header(
+                'Location: ../../public/index.php'
+            );
+
+            exit;
+        }
     }
 ?>

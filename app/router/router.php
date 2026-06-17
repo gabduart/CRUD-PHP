@@ -1,4 +1,5 @@
 <?php 
+    require_once __DIR__ . '/../config/config.php';
     session_start();
     require_once __DIR__ . '/../controllers/UserController.php';
     require_once __DIR__ . '/../services/UserService.php';
@@ -14,12 +15,25 @@
     if ($action !== null) {
 
         switch ($action) {
+
             case 'store':
                 $controller->store();
                 break;
 
             case 'view':
                 $controller->view();
+                break;
+
+            case 'edit':
+                $controller->edit();
+                break;
+
+            case 'update':
+                $controller->update();
+                break;
+
+            case 'delete':
+                $controller->delete();
                 break;
 
             default:

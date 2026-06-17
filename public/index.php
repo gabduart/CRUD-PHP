@@ -47,8 +47,17 @@
                         <td><?= date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
                         <td>
                             <a href="../app/router/router.php?action=view&id=<?= $usuario['id'] ?>">Vizualizar</a>
-                            <a href="">Editar</a>
-                            <a href="">Excluir</a>
+                            <a href="../app/router/router.php?action=edit&id=<?= $usuario['id'] ?>">Editar</a>
+                            <form
+                                action="../app/router/router.php?action=delete&id=<?= $usuario['id'] ?>"
+                                method="post"
+                                style="display:inline;"
+                                onsubmit="return confirm('Tem certeza que deseja excluir este usuário?')"
+                            >
+                                <button type="submit">
+                                    Excluir
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     <?php endforeach; ?>

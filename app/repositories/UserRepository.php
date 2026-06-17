@@ -49,5 +49,37 @@
 
             return $resultado->fetch_assoc() ?: null;
         }
+
+        public function update(User $user): bool {
+            $stmt = $this->conexao->prepare(
+                "UPDATE users
+                SET nome = ?, email = ?, data_nascimento = ?
+                WHERE id = ?"
+            );
+
+            $stmt->bind_param(
+                "sssi",
+                $user->getNome(),
+                $user->getEmail(),
+                $user->getDataNascimento(),
+                $user->getId()
+            );
+
+            return $stmt->execute();
+        }
+
+        public function delete(int $id): bool {
+            $stmt = $this->conexao->prepare(
+                "DELETE FROM users
+                WHERE id = ?"
+            );
+
+            $stmt->bind_param(
+                "i",
+                $id
+            );
+
+            return $stmt->execute();
+        }
     }
 ?>
