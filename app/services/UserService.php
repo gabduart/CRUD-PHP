@@ -30,5 +30,30 @@
         public function serviceFindById(int $id) {
             return $this->repository->findById($id);
         }
+
+        public function serviceEdit(int $id) {
+            return $this->repository->findById($id);
+        }
+
+        public function serviceUpdate(array $dados): bool {
+            $usuario = new User(
+                $dados['nome'],
+                $dados['email'],
+                $dados['data_nascimento'],
+                ''
+            );
+
+            $usuario->setId(
+                (int) $dados['id']
+            );
+
+            return $this->repository->update(
+                $usuario
+            );
+        }
+
+        public function serviceDelete(int $id): bool {
+            return $this->repository->delete($id);
+        }
     }
 ?>
